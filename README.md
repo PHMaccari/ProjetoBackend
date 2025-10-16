@@ -10,3 +10,6 @@ Gabriel Dos Reis Klein
 
 Tema:
 05- Internet das coisas(IoT)
+
+Carta de Desafio:
+Regras Temporais
