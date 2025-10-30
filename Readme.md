@@ -25,6 +25,20 @@ Centralização de gerenciamento dos dispositivos conectados a internet, atualme
 
 
 
+## Casos de uso:
+
+- API para controle de dispositivos conectados a internet 
+- Gerenciamento para dispositivos executar tarefas 
+- Registrar novos dispositivos para execução de funcionalidades específicas.
+- Gerenciar e atualizar informações de dispositivos previamente cadastrados.
+- Realizar verificações de operabilidade e desempenho dos dispositivos existentes.
+- Remover cadastros de dispositivos inoperantes ou obsoletos.
+- Agendar e registrar novas tarefas nos dispositivos.
+- Consultar e acompanhar o status de tarefas pendentes ou em andamento.
+- Alterar os parâmetros ou detalhes de tarefas já cadastradas.
+- Excluir definitivamente tarefas do sistema.
+
+
 ## Entidades
 
 - `aparelhos`: A entidade que representa os próprios aparelhos.
