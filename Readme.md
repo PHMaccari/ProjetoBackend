@@ -16,10 +16,10 @@
 
 ## Tecnologias utilizadas
 
- - H3
- - Spring
- - Java
- - Intelli 
+ - H3 - Banco de dados em memória para persistência dos dados
+ - Spring - Framework para a construção das APIs REST e gerenciar dependencias
+ - Java - Linguagem principal para o desenvolvimento
+ - IntelliJ - IDE principal para o desenvolvimento.
  
 ## Limitações
 
