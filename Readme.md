@@ -12,7 +12,7 @@
  
 ## Problema
 
-- Centralização de gerenciamento dos dispositivos conectados a internet, atualmente se você quiser ligar um dispositivo ou dar uma tarefa a ele, você precisa do app da fabricante do aparelho para poder dar tarefa a ele
+- Centralizar controle. Atualmente, gerenciar dispositivos conectados à internet exige o uso do app da fabricante para ligá-los ou enviar tarefas a eles.
 
 ## Tecnologias utilizadas
 
