@@ -59,6 +59,8 @@
 - Um aparelho pode ter várias tarefas que podem ocorrer ao longo do dia
 - Uma tarefa pode ser feitas por vários aparelho se forem do mesmo tipo (Draw.io)
 - Uma categoria pode estar em vários aparelhos, porém o aparelho só pode ter uma categoria
+ <img width="509" height="405" alt="image" src="https://github.com/user-attachments/assets/f473f12e-eead-4588-af52-930e9bfb7bf3" />
+
 
 ## Endpoints
 
