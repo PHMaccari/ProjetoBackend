@@ -74,13 +74,17 @@ Centralização de gerenciamento dos dispositivos conectados a internet, atualme
 | Deletar um aparelho                    | `DELETE usuario/{usuario-id}/aparelhos/{aparelhos-id}`                      | `DELETE`    | Vazio                                                                                                           | `200 OK`          | `404 Nota Found` - aparelho não foi encontrado      |
 | Retornar tarefas do aparelho           | `GET usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas`                 | `GET`       | Vazio                                                                                                           | `200 OK`          | `404 Not Found` - aparelho não foi encontrado.      |
 | Retornar uma tarefa do aparelho        | `GET usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas/{tarefas-id}`    | `GET`       | Vazio                                                                                                           | `200 OK`          | `404 Not Found` - aparelho não foi encontrado.      |
-| Inserir nova tarefa                    | `POST usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas`                | `POST`      | `{ "tarefa": ligar aspirador de pó por 10 minutos, "hora":"16:20", "repetir": "segunda", "apenas":"sim"}`       | `201 Created`     | `404 Not Found` - aparelho não foi encontrado.      |
+| Inserir nova tarefa                    | `POST usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas`                | `POST`      | `{ "tarefa": ligar aspirador de pó por 10 minutos, "hora":"16:20", "repetir": "segunda", "periodo":"dentro"}`   | `201 Created`     | `404 Not Found` - aparelho não foi encontrado.      |
 | Atualizar tarefa                       | `PUT usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas/{tarefas-id}`    | `PUT`       | `"tarefa": ligar aspirador de pó por 20 minutos }`                                                              | `200 OK`          | `404 Not Found` - tarefa não foi encontrado.        |
 | Deleta uma tarefa                      | `DELETE usuario/{usuario-id}/aparelhos/{aparelhos-id}/tarefas/{tarefas-id}` | `DELETE`    | Vazio                                                                                                           | `200 OK`          | `404 Not Found` - tarefa não foi encontrado.        |
 | Inserir nova categoria                 | `POST usuario/{usuario-id}/categoria`                                       | `POST`      | `{"categoria-nome":"limpeza", "descricao":"limpeza da casa"}`                                                   | `201 Created`     | `400 Bad Request` - não foi possível criar aparelho |                                         
 | Atualizar informações de uma categoria | `PUT usuario/{usuario-id}/categoria/{categoria-id}`                         | `PUT`       | `{"descricao": "aparelhos que limpam a casa" }`                                                                 | `200 OK`          | `404 Not Found` - aparelho não foi encontrado       |
 | Deletar uma categoria                  | `DELETE usuario/{usuario-id}/categoria/{categoria-id}`                      | `DELETE`    | Vazio                                                                                                           | `200 OK`          | `404 Nota Found` - aparelho não foi encontrado      |
 
+## Como executar projeto localmente
+
+
+
 ## Carta Desafio
 
- - A implementação da carta desafio foi feita através do trancamento 
+ - A implementação da carta desafio foi feita através da inutilização do aparelho fora do período no dia e hora determinado pelo o usuário e através da inutilização de o aparelho dentro de um período determinado pelo usuário
