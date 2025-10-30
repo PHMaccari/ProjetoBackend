@@ -37,7 +37,14 @@ Centralização de gerenciamento dos dispositivos conectados a internet, atualme
 - Consultar e acompanhar o status de tarefas pendentes ou em andamento.
 - Alterar os parâmetros ou detalhes de tarefas já cadastradas.
 - Excluir definitivamente tarefas do sistema.
-
+- Cadastrar novos usuários para permitir para poder gerenciar os aparalhos.
+- Consulta de informações do usuário para mostrar aparelhos do usuário.
+- Atualizar informações de usuários para manter os registros sempre precisos.
+- Remover usuários do sistema que não usam mas o sistema.
+- Criar novas categorias para organizar aparelhos de maneira estruturada e eficiente.
+- Administrar categorias existentes, otimizando a classificação dos aparelhos.
+- Atualizar dados de categorias para refletir alterações de finalidade.
+- Excluir categorias obsoletas garantindo a manutenção de um ambiente limpo e funcional.
 
 ## Entidades
 
