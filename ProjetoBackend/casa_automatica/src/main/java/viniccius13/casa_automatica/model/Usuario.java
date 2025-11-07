@@ -2,6 +2,7 @@ package viniccius13.casa_automatica.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 
 @Entity
@@ -23,4 +24,8 @@ public class Usuario {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Aparelho> aparelhos;
 }

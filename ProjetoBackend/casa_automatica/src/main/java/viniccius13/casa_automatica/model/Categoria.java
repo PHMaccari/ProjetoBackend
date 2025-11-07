@@ -2,6 +2,7 @@ package viniccius13.casa_automatica.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 
 @Entity
@@ -22,4 +23,8 @@ public class Categoria {
 
 
     private String descricao;
+
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Aparelho> aparelhos;
 }

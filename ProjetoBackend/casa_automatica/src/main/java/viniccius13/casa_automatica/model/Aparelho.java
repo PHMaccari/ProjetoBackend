@@ -2,8 +2,6 @@ package viniccius13.casa_automatica.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
 import java.util.List;
 
 
@@ -20,6 +18,7 @@ public class Aparelho {
     private Long id;
 
 
+    @Column(nullable = false)
     private String nome;
 
 
@@ -27,15 +26,15 @@ public class Aparelho {
 
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
-
-
-    @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
 
-    @OneToMany(mappedBy = "aparelho", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+
+    @OneToMany(mappedBy = "aparelho", cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
 }

@@ -30,6 +30,9 @@ public class Tarefa {
     private String periodo; // Ex: "dentro" ou "fora"
 
 
+    private String situacao; // Ex: "permitida" ou "fora-do-periodo"
+
+
     @ManyToOne
     @JoinColumn(name = "aparelho_id", nullable = false)
     private Aparelho aparelho;
