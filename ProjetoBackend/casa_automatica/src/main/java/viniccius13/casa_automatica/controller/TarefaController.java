@@ -1,62 +1,38 @@
 package viniccius13.casa_automatica.controller;
 
-import viniccius13.casa_automatica.model.Tarefa;
+import viniccius13.casa_automatica.dtos.TarefaDTO;
 import viniccius13.casa_automatica.service.TarefaService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.net.URI;
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/usuario/{usuarioId}/aparelhos/{aparelhoId}/tarefas")
+@RequestMapping("/api/tarefas")
+@RequiredArgsConstructor
 public class TarefaController {
-
 
     private final TarefaService tarefaService;
 
-
-    public TarefaController(TarefaService tarefaService) {
-        this.tarefaService = tarefaService;
+    @PostMapping
+    public ResponseEntity<TarefaDTO> create(@Valid @RequestBody TarefaDTO dto) {
+        var saved = tarefaService.criarTarefa(dto);
+        return ResponseEntity.created(URI.create("/api/tarefas/" + saved.getId()))
+                .body(saved);
     }
-
 
     @GetMapping
-    public ResponseEntity<List<Tarefa>> listarTarefas(@PathVariable Long aparelhoId) {
-        return ResponseEntity.ok(tarefaService.listarPorAparelho(aparelhoId));
+    public ResponseEntity<List<TarefaDTO>> getAll() {
+        return ResponseEntity.ok(tarefaService.listarTarefas());
     }
 
-
-    @GetMapping("/{tarefaId}")
-    public ResponseEntity<Tarefa> buscarTarefa(@PathVariable Long tarefaId) {
-        return tarefaService.buscarPorId(tarefaId)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-
-    @PostMapping
-    public ResponseEntity<Tarefa> criarTarefa(@PathVariable Long aparelhoId, @RequestBody Tarefa tarefa) {
-        return tarefaService.salvar(aparelhoId, tarefa)
-                .map(t -> ResponseEntity.status(201).body(t))
-                .orElse(ResponseEntity.badRequest().build());
-    }
-
-
-    @PutMapping("/{tarefaId}")
-    public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable Long tarefaId, @RequestBody Tarefa tarefa) {
-        return tarefaService.atualizar(tarefaId, tarefa)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-
-    @DeleteMapping("/{tarefaId}")
-    public ResponseEntity<Void> deletarTarefa(@PathVariable Long tarefaId) {
-        if (tarefaService.deletar(tarefaId)) {
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        tarefaService.deletarTarefa(id);
+        return ResponseEntity.noContent().build();
     }
 }
+
