@@ -229,7 +229,35 @@ git clone https://github.com/PHMaccari/ProjetoBackend.git
 cd ProjetoBackend/casa_automatica
 ```
 
-2. Execute a aplicação:
+2. Configure as variáveis de ambiente:
+
+Copie o arquivo `env.example` para `.env`:
+```bash
+# Windows (PowerShell)
+Copy-Item env.example .env
+
+# Linux/Mac
+cp env.example .env
+```
+
+Edite o arquivo `.env` conforme necessário. As configurações padrão já funcionam para desenvolvimento local.
+
+**Variáveis disponíveis:**
+- `DB_URL` - URL de conexão do banco de dados (padrão: `jdbc:h2:mem:casadb`)
+- `DB_DRIVER` - Driver do banco de dados (padrão: `org.h2.Driver`)
+- `DB_USERNAME` - Usuário do banco (padrão: `sa`)
+- `DB_PASSWORD` - Senha do banco (padrão: vazio)
+- `JPA_DDL_AUTO` - Estratégia de criação do schema (padrão: `update`)
+- `JPA_SHOW_SQL` - Exibir SQL no console (padrão: `true`)
+- `H2_CONSOLE_ENABLED` - Habilitar console H2 (padrão: `true`)
+- `H2_CONSOLE_PATH` - Caminho do console H2 (padrão: `/h2-console`)
+- `SERVER_PORT` - Porta do servidor (padrão: `8080`)
+
+**Nota:** O arquivo `.env` está no `.gitignore` e não será versionado. Use o `env.example` como referência.
+
+📖 **Para mais detalhes sobre configuração de variáveis de ambiente, consulte [ENV_SETUP.md](casa_automatica/ENV_SETUP.md)**
+
+3. Execute a aplicação:
 
 **Usando Maven Wrapper (recomendado):**
 ```bash
