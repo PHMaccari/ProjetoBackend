@@ -8,6 +8,11 @@ spring:
     hibernate:
       ddl-auto: ${JPA_DDL_AUTO:update}
     show-sql: ${JPA_SHOW_SQL:true}
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
 
 # H2 Console
 spring.h2.console.enabled: ${H2_CONSOLE_ENABLED:true}
@@ -16,3 +21,21 @@ spring.h2.console.path: ${H2_CONSOLE_PATH:/h2-console}
 # Porta opcional (mude se precisar)
 server:
   port: ${SERVER_PORT:8080}
+
+# Springdoc OpenAPI
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    try-it-out-enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+  show-actuator: false
+
+# Logging
+logging:
+  level:
+    org.springdoc: DEBUG
+    org.springframework.web: DEBUG
