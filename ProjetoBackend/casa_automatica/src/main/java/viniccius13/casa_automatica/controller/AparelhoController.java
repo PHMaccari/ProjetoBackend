@@ -29,6 +29,18 @@ public class AparelhoController {
         return ResponseEntity.ok(aparelhoService.listarAparelhos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<AparelhoDTO> getById(@PathVariable Long id) {
+        AparelhoDTO aparelho = aparelhoService.buscarPorId(id);
+        return ResponseEntity.ok(aparelho);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AparelhoDTO> update(@PathVariable Long id, @Valid @RequestBody AparelhoDTO dto) {
+        AparelhoDTO atualizado = aparelhoService.atualizar(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         aparelhoService.deletarAparelho(id);

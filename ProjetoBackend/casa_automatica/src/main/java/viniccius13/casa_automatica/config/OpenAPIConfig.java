@@ -17,10 +17,13 @@ public class OpenAPIConfig {
                         .title("API Casa Automática")
                         .description("Documentação da API para controle de automação residencial")
                         .version("1.0.0")
-                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                        .license(new License()
+                                .name("Apache 2.0")
+                                .url("https://www.apache.org/licenses/LICENSE-2.0")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Repositório GitHub")
-                        .url("https://github.com"));
+                        .description("Repositório do Projeto")
+                        .url("https://github.com/PHMaccari/ProjetoBackend"));
     }
 }
+
 

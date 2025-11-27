@@ -18,7 +18,7 @@ public class Tarefa {
 
 
     @Column(nullable = false)
-    private String tarefa; // Ex: "ligar aspirador de pó por 10 minutos"
+    private String descricao; // Ex: "ligar aspirador de pó por 10 minutos"
 
 
     private String hora; // Ex: "16:20"

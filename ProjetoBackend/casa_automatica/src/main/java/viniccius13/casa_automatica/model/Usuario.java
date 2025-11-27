@@ -3,6 +3,9 @@ package viniccius13.casa_automatica.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 
 @Entity

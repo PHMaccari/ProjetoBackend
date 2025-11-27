@@ -1,5 +1,7 @@
 package viniccius13.casa_automatica.controller;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import viniccius13.casa_automatica.dtos.UsuarioDTO;
 import viniccius13.casa_automatica.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -8,18 +10,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-
     @PostMapping
-    public ResponseEntity<UsuarioDTO> criar(@RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<UsuarioDTO> criar(@Valid @RequestBody UsuarioDTO usuarioDTO) {
         UsuarioDTO created = usuarioService.salvar(usuarioDTO);
-        return ResponseEntity.ok(created);
+        return ResponseEntity.created(java.net.URI.create("/api/usuarios/" + created.getId()))
+                .body(created);
     }
 
     @GetMapping("/{id}")
@@ -34,7 +34,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> atualizar(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<UsuarioDTO> atualizar(@PathVariable Long id, @Valid @RequestBody UsuarioDTO usuarioDTO) {
         UsuarioDTO atualizado = usuarioService.atualizar(id, usuarioDTO);
         return ResponseEntity.ok(atualizado);
     }

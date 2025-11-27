@@ -2,6 +2,8 @@ package viniccius13.casa_automatica.service;
 
 import org.springframework.stereotype.Service;
 import viniccius13.casa_automatica.dtos.UsuarioDTO;
+import viniccius13.casa_automatica.exception.NotFoundException;
+import viniccius13.casa_automatica.mappers.UsuarioMapper;
 import viniccius13.casa_automatica.model.Usuario;
 import viniccius13.casa_automatica.repository.UsuarioRepository;
 
@@ -12,45 +14,47 @@ import java.util.stream.Collectors;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final UsuarioMapper usuarioMapper;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapper) {
         this.usuarioRepository = usuarioRepository;
+        this.usuarioMapper = usuarioMapper;
     }
 
     public UsuarioDTO salvar(UsuarioDTO dto) {
-        Usuario usuario = new Usuario(null, dto.getNome(), dto.getEmail(), dto.getSenha());
+        Usuario usuario = usuarioMapper.toEntity(dto);
         Usuario salvo = usuarioRepository.save(usuario);
-        return new UsuarioDTO(salvo.getId(), salvo.getNome(), salvo.getEmail(), salvo.getSenha());
+        return usuarioMapper.toDTO(salvo);
     }
 
     public UsuarioDTO buscarPorId(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        return new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getSenha());
+                .orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
+        return usuarioMapper.toDTO(usuario);
     }
 
     public List<UsuarioDTO> listar() {
         return usuarioRepository.findAll()
                 .stream()
-                .map(u -> new UsuarioDTO(u.getId(), u.getNome(), u.getEmail(), u.getSenha()))
+                .map(usuarioMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
     public UsuarioDTO atualizar(Long id, UsuarioDTO dto) {
         Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
 
         usuario.setNome(dto.getNome());
         usuario.setEmail(dto.getEmail());
         usuario.setSenha(dto.getSenha());
 
         Usuario atualizado = usuarioRepository.save(usuario);
-        return new UsuarioDTO(atualizado.getId(), atualizado.getNome(), atualizado.getEmail(), atualizado.getSenha());
+        return usuarioMapper.toDTO(atualizado);
     }
 
     public void deletar(Long id) {
         if (!usuarioRepository.existsById(id)) {
-            throw new RuntimeException("Usuário não encontrado");
+            throw new NotFoundException("Usuário não encontrado");
         }
         usuarioRepository.deleteById(id);
     }

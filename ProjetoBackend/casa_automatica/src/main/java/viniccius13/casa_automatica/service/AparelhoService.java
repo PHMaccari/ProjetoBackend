@@ -1,6 +1,8 @@
 package viniccius13.casa_automatica.service;
 
 import viniccius13.casa_automatica.dtos.AparelhoDTO;
+import viniccius13.casa_automatica.exception.BusinessException;
+import viniccius13.casa_automatica.exception.NotFoundException;
 import viniccius13.casa_automatica.model.Aparelho;
 import viniccius13.casa_automatica.model.Usuario;
 import viniccius13.casa_automatica.model.Categoria;
@@ -26,6 +28,7 @@ public class AparelhoService {
             AparelhoMapper aparelhoMapper,
             UsuarioRepository usuarioRepository,
             CategoriaRepository categoriaRepository) {
+
         this.aparelhoRepository = aparelhoRepository;
         this.aparelhoMapper = aparelhoMapper;
         this.usuarioRepository = usuarioRepository;
@@ -34,11 +37,15 @@ public class AparelhoService {
 
     public AparelhoDTO criarAparelho(AparelhoDTO dto) {
 
+        if (dto.getUsuarioId() == null || dto.getCategoriaId() == null) {
+            throw new BusinessException("Usuário e categoria são obrigatórios");
+        }
+
         Usuario usuario = usuarioRepository.findById(dto.getUsuarioId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
 
         Categoria categoria = categoriaRepository.findById(dto.getCategoriaId())
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
 
         Aparelho aparelho = aparelhoMapper.toEntity(dto);
         aparelho.setUsuario(usuario);
@@ -54,8 +61,39 @@ public class AparelhoService {
                 .collect(Collectors.toList());
     }
 
+    public AparelhoDTO buscarPorId(Long id) {
+        Aparelho aparelho = aparelhoRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Aparelho não encontrado"));
+        return aparelhoMapper.toDTO(aparelho);
+    }
+
+    public AparelhoDTO atualizar(Long id, AparelhoDTO dto) {
+        Aparelho aparelho = aparelhoRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Aparelho não encontrado"));
+
+        if (dto.getUsuarioId() == null || dto.getCategoriaId() == null) {
+            throw new BusinessException("Usuário e categoria são obrigatórios");
+        }
+
+        Usuario usuario = usuarioRepository.findById(dto.getUsuarioId())
+                .orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
+
+        Categoria categoria = categoriaRepository.findById(dto.getCategoriaId())
+                .orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
+
+        aparelho.setNome(dto.getNome());
+        aparelho.setDescricao(dto.getDescricao());
+        aparelho.setUsuario(usuario);
+        aparelho.setCategoria(categoria);
+
+        Aparelho atualizado = aparelhoRepository.save(aparelho);
+        return aparelhoMapper.toDTO(atualizado);
+    }
+
     public void deletarAparelho(Long id) {
+        if (!aparelhoRepository.existsById(id)) {
+            throw new NotFoundException("Aparelho não encontrado");
+        }
         aparelhoRepository.deleteById(id);
     }
 }
-

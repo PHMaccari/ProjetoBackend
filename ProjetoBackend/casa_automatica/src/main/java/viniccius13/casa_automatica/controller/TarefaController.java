@@ -29,6 +29,18 @@ public class TarefaController {
         return ResponseEntity.ok(tarefaService.listarTarefas());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TarefaDTO> getById(@PathVariable Long id) {
+        TarefaDTO tarefa = tarefaService.buscarPorId(id);
+        return ResponseEntity.ok(tarefa);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TarefaDTO> update(@PathVariable Long id, @Valid @RequestBody TarefaDTO dto) {
+        TarefaDTO atualizado = tarefaService.atualizar(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         tarefaService.deletarTarefa(id);
