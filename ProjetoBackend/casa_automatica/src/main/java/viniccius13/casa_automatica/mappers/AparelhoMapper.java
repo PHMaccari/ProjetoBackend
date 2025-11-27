@@ -12,6 +12,7 @@ public interface AparelhoMapper {
     @Mapping(source = "categoria.id", target = "categoriaId")
     AparelhoDTO toDTO(Aparelho aparelho);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "usuario", ignore = true)
     @Mapping(target = "categoria", ignore = true)
     @Mapping(target = "tarefas", ignore = true)

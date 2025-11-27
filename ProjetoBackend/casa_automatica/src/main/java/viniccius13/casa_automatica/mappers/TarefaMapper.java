@@ -16,6 +16,7 @@ public interface TarefaMapper {
     @Mapping(target = "fimPeriodo", ignore = true)
     TarefaDTO toDTO(Tarefa tarefa);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(source = "aparelhoId", target = "aparelho.id")
     @Mapping(source = "hora", target = "hora", qualifiedByName = "localTimeToString")
     @Mapping(target = "situacao", ignore = true)

@@ -11,11 +11,13 @@ import viniccius13.casa_automatica.repository.AparelhoRepository;
 import viniccius13.casa_automatica.repository.UsuarioRepository;
 import viniccius13.casa_automatica.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class AparelhoService {
 
     private final AparelhoRepository aparelhoRepository;

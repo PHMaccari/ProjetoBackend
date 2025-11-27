@@ -6,11 +6,13 @@ import viniccius13.casa_automatica.model.Categoria;
 import viniccius13.casa_automatica.mappers.CategoriaMapper;
 import viniccius13.casa_automatica.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class CategoriaService {
 
     private final CategoriaRepository categoriaRepository;

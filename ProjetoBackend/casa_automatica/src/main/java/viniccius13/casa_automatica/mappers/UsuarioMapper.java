@@ -11,6 +11,7 @@ public interface UsuarioMapper {
     @Mapping(target = "senha", ignore = true)
     UsuarioDTO toDTO(Usuario usuario);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "aparelhos", ignore = true)
     Usuario toEntity(UsuarioDTO usuarioDTO);
 }

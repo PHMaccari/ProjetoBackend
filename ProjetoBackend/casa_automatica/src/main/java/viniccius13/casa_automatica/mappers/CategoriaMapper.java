@@ -10,6 +10,7 @@ public interface CategoriaMapper {
 
     CategoriaDTO toDTO(Categoria categoria);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "aparelhos", ignore = true)
     Categoria toEntity(CategoriaDTO categoriaDTO);
 }

@@ -9,6 +9,7 @@ import viniccius13.casa_automatica.mappers.TarefaMapper;
 import viniccius13.casa_automatica.repository.AparelhoRepository;
 import viniccius13.casa_automatica.repository.TarefaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class TarefaService {
 
     private final TarefaRepository tarefaRepository;

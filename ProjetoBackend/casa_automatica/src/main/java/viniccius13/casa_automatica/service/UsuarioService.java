@@ -1,6 +1,7 @@
 package viniccius13.casa_automatica.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import viniccius13.casa_automatica.dtos.UsuarioDTO;
 import viniccius13.casa_automatica.exception.NotFoundException;
 import viniccius13.casa_automatica.mappers.UsuarioMapper;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
