@@ -73,7 +73,8 @@ O projeto segue uma arquitetura em camadas:
 - Uma tarefa pertence a apenas um aparelho
 - Uma categoria pode estar em vários aparelhos, porém o aparelho só pode ter uma categoria
 
-<img width="509" height="405" alt="image" src="https://github.com/user-attachments/assets/f473f12e-eead-4588-af52-930e9bfb7bf3" />
+<img width="471" height="637" alt="image" src="https://github.com/user-attachments/assets/d3e0566d-f1dd-4e91-8995-05ad4bbc0a6c" />
+
 
 ## Endpoints
 
