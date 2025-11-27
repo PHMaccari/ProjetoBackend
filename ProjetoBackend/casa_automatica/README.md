@@ -25,17 +25,17 @@ O projeto usa um arquivo `.env` para configuração. Copie o arquivo de exemplo:
 
 **Windows (PowerShell):**
 ```powershell
-Copy-Item env.example .env
+Copy-Item .env.example .env
 ```
 
 **Windows (CMD):**
 ```cmd
-copy env.example .env
+copy .env.example .env
 ```
 
 **Linux/Mac:**
 ```bash
-cp env.example .env
+cp .env.example .env
 ```
 
 > 💡 **Nota:** As configurações padrão já funcionam para desenvolvimento local. Você pode editar o `.env` se precisar customizar.
@@ -312,4 +312,5 @@ Este projeto está sob a licença MIT.
 ---
 
 ⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
+
 

@@ -6,21 +6,21 @@ Este projeto utiliza variáveis de ambiente para configuração. As variáveis p
 
 ### 1. Criar o arquivo .env
 
-Copie o arquivo `env.example` para `.env`:
+Copie o arquivo `.env.example` para `.env`:
 
 **Windows (PowerShell):**
 ```powershell
-Copy-Item env.example .env
+Copy-Item .env.example .env
 ```
 
 **Windows (CMD):**
 ```cmd
-copy env.example .env
+copy .env.example .env
 ```
 
 **Linux/Mac:**
 ```bash
-cp env.example .env
+cp .env.example .env
 ```
 
 ### 2. Editar as variáveis (opcional)
@@ -115,7 +115,7 @@ SERVER_PORT=8080
 
 - O arquivo `.env` está no `.gitignore` e **NÃO deve ser versionado**
 - Nunca compartilhe seu arquivo `.env` com senhas reais
-- Use o `env.example` como template sem informações sensíveis
+- Use o `.env.example` como template sem informações sensíveis
 - Em produção, considere usar variáveis de ambiente do sistema ou serviços de gerenciamento de segredos
 
 ## Como Funciona
@@ -163,5 +163,6 @@ Para mais informações sobre as configurações do Spring Boot, consulte:
 - [Spring Boot Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html)
 - [H2 Database](https://www.h2database.com/)
 - [dotenv-java](https://github.com/cdimascio/dotenv-java)
+
 
 

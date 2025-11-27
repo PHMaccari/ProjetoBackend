@@ -24,10 +24,10 @@ java -version
 ### 2. Criar arquivo .env
 ```bash
 # Windows PowerShell
-Copy-Item env.example .env
+Copy-Item .env.example .env
 
 # Linux/Mac
-cp env.example .env
+cp .env.example .env
 ```
 
 ### 3. Dar permissão ao Maven Wrapper (Linux/Mac apenas)
@@ -120,7 +120,7 @@ lsof -ti:8080 | xargs kill -9
 ```bash
 # Deletar e recriar o .env
 rm .env
-cp env.example .env
+cp .env.example .env
 ```
 
 ## ✨ Teste Final
@@ -129,7 +129,7 @@ Após clonar e configurar, execute:
 
 ```bash
 # 1. Criar .env
-cp env.example .env
+cp .env.example .env
 
 # 2. Compilar
 ./mvnw clean compile
@@ -154,4 +154,5 @@ Se você receber uma resposta JSON (mesmo que vazia `[]`), está tudo funcionand
 ---
 
 **Status do Projeto:** ✅ Pronto para Deploy
+
 
