@@ -304,6 +304,6 @@ A funcionalidade é implementada através do campo `periodo` na entidade `Tarefa
 - `"dentro"` - Tarefa só pode ser executada dentro do período especificado
 - `"fora"` - Tarefa só pode ser executada fora do período especificado
 - `"sem restricao"` - Tarefa pode ser executada a qualquer momento
-
+--------------------------------------------------------
 - Os campos `inicioPeriodo` e `fimPeriodo` definem o intervalo de tempo permitido ou bloqueado, dependendo do valor de `periodo`.
 - A API puxa o horário local(atual) do dispositivo, se tentar criar uma tarefa anterior ao horário atual, você irá ser bloqueado da criação. Necessário criar a tarefa num horário futuro ao local
